@@ -9,18 +9,23 @@ namespace Slutprojektet
         {
             StartGame runGame = new StartGame();
 
-            Console.Title = "Tamagotchi";
+            Console.Title = "Tamagotchi";       // Fönstrets namn. 
             int menuChoises = 0;
-            string menuChoisesString = "";
+            string menuChoisesString = "";      // Tom string för att kunna svara.
 
-            while (menuChoises != 3) // Innehållet som finns i menyn.
+            // Loopen behövs för att menyn ska skrivas ut. Den ser också till att skriva ut menyn en
+            while (menuChoises != 1)    // menuChoises != 1 gör så att kod blocket körs en gång när man trycker på val 1. 
             {
-                Console.WriteLine("Välj ett alternativ!");
+                Console.WriteLine("Välkommen till Tamagotchi");
+                Console.WriteLine();
+                Console.WriteLine("Välj ett alternativ, 1 eller 2!");
                 Console.WriteLine("1. Starta spel!");
                 Console.WriteLine("2. Hur funkar det?");
+                Console.WriteLine();
                 menuChoisesString = Console.ReadLine();
 
-                while (!int.TryParse(menuChoisesString, out menuChoises))       // Koden gör att den inte krashar om anvädaren inte följer instruktionerna.
+                // Gör om string till en int går inte vidare i spelet om man svara utifrån vad programmet frågar. 
+                while (!int.TryParse(menuChoisesString, out menuChoises))
                 {
                     Console.WriteLine();
                     Console.Clear();
@@ -31,13 +36,27 @@ namespace Slutprojektet
                     menuChoisesString = Console.ReadLine();
                 }
 
-                Console.ReadLine();
+                //Om man svarar 1 fortsätter programmet till startgame klassen och kör koden där. 
+                if (menuChoisesString == "1")
+                {
+                    runGame.lauchGame();
+                }
 
+                // Om man svarar 2 får man en förklaring till hur spelt funkar. 
+                else if (menuChoisesString == "2")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Spelet går ut på att hålla din Tamagotchi vid liv.");
+                    Console.WriteLine("Du ska välja mellan att lära den ett nytt ord, hälsa på den, mata den eller göra ingenting.");
+                    Console.WriteLine("Varje gång du gör ett val ökar hunger och boredom, och om någon av de blir över 10 så DÖR din tamagotchi.");
+                    Console.WriteLine("DÖD TAMAGOTCHI = GAME OVER");
+                    Console.WriteLine("Lycka till!");
+                }
 
+                Console.WriteLine();
             }
 
             Console.ReadLine();
-
         }
     }
 }
