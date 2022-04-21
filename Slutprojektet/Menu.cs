@@ -18,7 +18,7 @@ namespace Slutprojektet
             {
                 Console.WriteLine("Välkommen till Tamagotchi");
                 Console.WriteLine();
-                Console.WriteLine("Välj ett alternativ, 1 eller 2!");
+                Console.WriteLine("Välj ett alternativ, 1 eller 2 och tryck [ENTER] för att fortsätta.");
                 Console.WriteLine("1. Starta spel!");
                 Console.WriteLine("2. Hur funkar det?");
                 Console.WriteLine();
@@ -29,10 +29,12 @@ namespace Slutprojektet
                 {
                     Console.WriteLine();
                     Console.Clear();
-                    Console.WriteLine("Det där är inte ett giltigt svar.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Det där är inte ett giltigt svar!");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Välj 1 eller 2, Försök igen!");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Okej, Jag väljer då: ");
-
                     menuChoisesString = Console.ReadLine();
                 }
 

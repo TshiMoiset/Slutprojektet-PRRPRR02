@@ -16,7 +16,7 @@ namespace Slutprojektet
         // Feed behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
-            hunger -= 1;
+            hunger -= randomNumber.Next(0, 10);
         }
 
         // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
@@ -50,8 +50,8 @@ namespace Slutprojektet
         // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
         public void tick()
         {
-            hunger += 1;
-            boredom += 1;
+            hunger += randomNumber.Next(0, 2);
+            boredom += randomNumber.Next(0, 3);
             if (boredom > 10 || hunger > 10)
             {
                 isAlive = false;
@@ -62,9 +62,7 @@ namespace Slutprojektet
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public void printStats()
         {
-            Console.WriteLine($"Boredom: {boredom}");
-            Console.WriteLine($"Hunger: {hunger}");
-            Console.WriteLine($"Lever din karaktär: {isAlive}");
+            Console.WriteLine($"Boredom: {boredom} || Hunger: {hunger} || Vokabulär: {words} || Vid Liv: {isAlive} ||");
         }
 
         // Returnerar värdet som isAlive har.
@@ -76,8 +74,7 @@ namespace Slutprojektet
         // Sänker boredom.
         private void reduceBoredom()
         {
-            boredom -= 1;
+            boredom -= randomNumber.Next(0, 10);
         }
-
     }
 }
