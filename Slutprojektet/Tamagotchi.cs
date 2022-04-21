@@ -5,13 +5,19 @@ namespace Slutprojektet
 {
     public class Tamagotchi
     {
-        int hunger = 0;
-        int boredom = 0;
+        int hunger;
+        int boredom;
         List<string> words = new List<string>();
         bool isAlive = true;
 
         Random randomNumber = new Random();
         public string name;
+
+        public void IntWorth()
+        {
+            hunger = randomNumber.Next(0, 5);
+            boredom = randomNumber.Next(0, 5);
+        }
 
         // Feed behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
@@ -55,6 +61,7 @@ namespace Slutprojektet
             if (boredom > 10 || hunger > 10)
             {
                 isAlive = false;
+                Console.WriteLine();
                 Console.WriteLine("GAME OVER");
             }
         }
@@ -62,7 +69,7 @@ namespace Slutprojektet
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public void printStats()
         {
-            Console.WriteLine($"Boredom: {boredom} || Hunger: {hunger} || Vokabulär: {words} || Vid Liv: {isAlive} ||");
+            Console.WriteLine($"Tråkighet: {boredom} || Hunger: {hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
         }
 
         // Returnerar värdet som isAlive har.

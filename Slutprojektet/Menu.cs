@@ -16,6 +16,7 @@ namespace Slutprojektet
             // Loopen behövs för att menyn ska skrivas ut. Den ser också till att skriva ut menyn en
             while (menuChoises != 1)    // menuChoises != 1 gör så att kod blocket körs en gång när man trycker på val 1. 
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Välkommen till Tamagotchi");
                 Console.WriteLine();
                 Console.WriteLine("Välj ett alternativ, 1 eller 2 och tryck [ENTER] för att fortsätta.");
@@ -24,7 +25,7 @@ namespace Slutprojektet
                 Console.WriteLine();
                 menuChoisesString = Console.ReadLine();
 
-                // Gör om string till en int går inte vidare i spelet om man svara utifrån vad programmet frågar. 
+                // Gör om string till en int går inte vidare i spelet om man inte svara utifrån vad programmet frågar efter.
                 while (!int.TryParse(menuChoisesString, out menuChoises))
                 {
                     Console.WriteLine();

@@ -14,21 +14,23 @@ namespace Slutprojektet
             Tamagotchi tamagotchi1 = new Tamagotchi();
             tamagotchi1.name = "";
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
             Console.Write("Tamagotchi namn: ");
             tamagotchi1.name = Console.ReadLine();
+            tamagotchi1.IntWorth();
 
             Console.WriteLine();
-            Console.Write($"Namn: {tamagotchi1.name} || ");
 
             while (tamagotchi1.GetAlive())
             {
+                Console.Clear();
+                Console.Write($"Namn: {tamagotchi1.name} || ");
                 tamagotchi1.printStats();
                 Console.WriteLine();
-
                 Console.WriteLine("Vad vill du göra?");
-                Console.WriteLine($"1. Lära {tamagotchi1.name} ett nytt ord");
+                Console.WriteLine($"1. Lär {tamagotchi1.name} ett nytt ord");
                 Console.WriteLine($"2. Hälsa på {tamagotchi1.name}");
                 Console.WriteLine($"3. Mata {tamagotchi1.name}");
                 Console.WriteLine($"4. Göra ingenting");
@@ -83,6 +85,15 @@ namespace Slutprojektet
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Välj en siffra mellan 1-4, Försök igen!");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                    Console.Write($"Namn: {tamagotchi1.name} || ");
+                    tamagotchi1.printStats();
+                    Console.WriteLine();
+                    Console.WriteLine("Vad vill du göra?");
+                    Console.WriteLine($"1. Lär {tamagotchi1.name} ett nytt ord");
+                    Console.WriteLine($"2. Hälsa på {tamagotchi1.name}");
+                    Console.WriteLine($"3. Mata {tamagotchi1.name}");
+                    Console.WriteLine($"4. Göra ingenting");
                     Console.Write("Okej, Jag väljer då: ");
                     answer = Console.ReadLine();
                 }
