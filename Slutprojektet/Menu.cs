@@ -19,7 +19,7 @@ namespace Slutprojektet
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Välkommen till Tamagotchi");
                 Console.WriteLine();
-                Console.WriteLine("Välj ett alternativ, 1 eller 2 och tryck [ENTER] för att fortsätta.");
+                Console.WriteLine("Välj alternativ 1 eller 2 och tryck [ENTER] för att fortsätta.");
                 Console.WriteLine("1. Starta spel!");
                 Console.WriteLine("2. Hur funkar det?");
                 Console.WriteLine();

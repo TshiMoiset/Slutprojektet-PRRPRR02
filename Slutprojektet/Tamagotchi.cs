@@ -5,8 +5,8 @@ namespace Slutprojektet
 {
     public class Tamagotchi
     {
-        int hunger;
-        int boredom;
+        int hunger = 0;
+        int boredom = 0;
         List<string> words = new List<string>();
         bool isAlive = true;
 
