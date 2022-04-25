@@ -37,7 +37,6 @@ namespace Slutprojektet
                 {
                     gameInformation();
                 }
-
                 Console.WriteLine();
             }
         }
