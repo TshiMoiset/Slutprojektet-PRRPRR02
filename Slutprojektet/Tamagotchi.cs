@@ -1,3 +1,4 @@
+using System.Reflection;
 using System;
 using System.Collections.Generic;
 
@@ -13,11 +14,11 @@ namespace Slutprojektet
         Random randomNumber = new Random();
         public string name;
 
-        public void IntWorth()
-        {
-            hunger = randomNumber.Next(0, 5);
-            boredom = randomNumber.Next(0, 5);
-        }
+        // public void IntWorth()
+        // {
+        //     hunger = randomNumber.Next(0, 5);
+        //     boredom = randomNumber.Next(0, 5);
+        // }
 
         // Feed behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
@@ -49,8 +50,15 @@ namespace Slutprojektet
             {
                 Console.WriteLine(words[i]);
             }
-
             reduceBoredom();
+        }
+
+        public void showWords()
+        {
+            for (int i = 0; i < words.Count; i++)
+            {
+                Console.WriteLine(words[i - 1]);
+            }
         }
 
         // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.

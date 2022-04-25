@@ -18,8 +18,9 @@ namespace Slutprojektet
             Console.Clear();
             Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
             Console.Write("Tamagotchi namn: ");
-            tamagotchi1.name = Console.ReadLine();
-            tamagotchi1.IntWorth();
+            //tamagotchi1.name = Console.ReadLine();
+            tamagotchi1.name = Console.ReadLine().ToUpper();
+            //tamagotchi1.IntWorth();
 
             Console.WriteLine();
 
@@ -31,9 +32,10 @@ namespace Slutprojektet
                 Console.WriteLine();
                 Console.WriteLine("Vad vill du göra?");
                 Console.WriteLine($"1. Lär {tamagotchi1.name} ett nytt ord");
-                Console.WriteLine($"2. Hälsa på {tamagotchi1.name}");
-                Console.WriteLine($"3. Mata {tamagotchi1.name}");
-                Console.WriteLine($"4. Göra ingenting");
+                Console.WriteLine($"2. Vill du se hur många ord {tamagotchi1.name} kan?");
+                Console.WriteLine($"3. Hälsa på {tamagotchi1.name}");
+                Console.WriteLine($"4. Mata {tamagotchi1.name}");
+                Console.WriteLine($"5. Göra ingenting");
 
                 answer = Console.ReadLine();
 
@@ -45,6 +47,8 @@ namespace Slutprojektet
                     tamagotchi1.teach(wordAnswer);
                     Console.WriteLine();
                     Console.WriteLine($"{tamagotchi1.name} lärde sig ordet: {wordAnswer} ");
+                    Console.WriteLine($"Vill du se hur många ord {tamagotchi1.name} kan?");
+                    answer = Console.ReadLine();
                     tamagotchi1.tick();
                 }
 
@@ -58,7 +62,8 @@ namespace Slutprojektet
                 if (answer == "3")
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"Vad vill du att {tamagotchi1.name} ska äta?");
+                    Console.WriteLine($"Vad ska {tamagotchi1.name} äta?");
+                    Console.Write("Han ska äta: ");
                     food = Console.ReadLine().ToLower();
                     Console.WriteLine();
                     Console.WriteLine("Tack för maten, den var god :)");
@@ -70,8 +75,6 @@ namespace Slutprojektet
 
                 if (answer == "4")
                 {
-                    Console.WriteLine("Vad tråkig du är :(");
-                    Console.WriteLine();
                     tamagotchi1.tick();
                 }
 
@@ -98,7 +101,6 @@ namespace Slutprojektet
                     answer = Console.ReadLine();
                 }
             }
-
         }
     }
 }
