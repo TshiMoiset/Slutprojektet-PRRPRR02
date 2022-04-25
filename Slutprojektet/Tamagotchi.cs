@@ -14,16 +14,10 @@ namespace Slutprojektet
         Random randomNumber = new Random();
         public string name;
 
-        // public void IntWorth()
-        // {
-        //     hunger = randomNumber.Next(0, 5);
-        //     boredom = randomNumber.Next(0, 5);
-        // }
-
         // Feed behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
-            hunger -= randomNumber.Next(0, 10);
+            hunger -= 1;
         }
 
         // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
@@ -44,8 +38,8 @@ namespace Slutprojektet
         // Lägger till ett ord i words, och anropar ReduceBoredom.
         public void teach(string word)
         {
+            printStats();
             words.Add(word);
-            Console.Write("Ordet: ");
             for (int i = 0; i < words.Count; i++)
             {
                 Console.WriteLine(words[i]);
@@ -57,7 +51,7 @@ namespace Slutprojektet
         {
             for (int i = 0; i < words.Count; i++)
             {
-                Console.WriteLine(words[i - 1]);
+                Console.WriteLine(words[i]);
             }
         }
 
@@ -89,7 +83,7 @@ namespace Slutprojektet
         // Sänker boredom.
         private void reduceBoredom()
         {
-            boredom -= randomNumber.Next(0, 10);
+            boredom -= randomNumber.Next(0, 2);
         }
     }
 }

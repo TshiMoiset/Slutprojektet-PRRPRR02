@@ -29,6 +29,7 @@ namespace Slutprojektet
                 //Om man svarar 1 fortsätter programmet till startgame klassen och kör koden där. 
                 if (menuChoisesString == "1")
                 {
+                    Console.Clear();
                     runGame.lauchGame();
                 }
 
@@ -44,7 +45,7 @@ namespace Slutprojektet
         void menuAlternatives()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Välkommen till Tamagotchi");
+            Console.WriteLine("Välkommen till Tamagotchi!");
             Console.WriteLine();
             Console.WriteLine("Välj alternativ 1 eller 2 och tryck [ENTER] för att fortsätta.");
             Console.WriteLine("1. Starta spel!");
