@@ -38,12 +38,7 @@ namespace Slutprojektet
         // Lägger till ett ord i words, och anropar ReduceBoredom.
         public void teach(string word)
         {
-            printStats();
             words.Add(word);
-            for (int i = 0; i < words.Count; i++)
-            {
-                Console.WriteLine(words[i]);
-            }
             reduceBoredom();
         }
 
