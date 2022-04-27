@@ -14,29 +14,22 @@ namespace Slutprojektet
             string menuChoisesString = "";      // Tom string för att kunna svara.
             bool isItValid = false;
 
-            // Loopen behövs för att menyn ska skrivas ut. Den ser också till att skriva ut menyn en
-            while (menuChoises != 1)    // menuChoises != 1 gör så att kod blocket körs en gång när man trycker på val 1. 
+            // Loopen behövs för att menyn ska skrivas ut i konsolen. 
+            while (menuChoises != 1)    // Så länge menuChoises inte är lika med 1 kommer loopen köras och menyn kommer skrivas ut. 
             {
-                //Console.Clear();
-                menuAlternatives();
+                menuAlternatives();     // Skriver ut det som står i metoden, vilket är menyns val alternativ.
                 menuChoisesString = Console.ReadLine();
-
-                if (menuChoisesString == "1" || menuChoisesString == "2")
-                {
-                    isItValid = true;
-
-                }
 
                 // Gör om string till en int och tvingar spelaren till att svara med en int. Går inte vidare i spelet annars.
                 while (!int.TryParse(menuChoisesString, out menuChoises) || !isItValid)
                 {
-                    wrongMenuInput();
+                    wrongMenuInput();       // Skriver ut det som står i metoden, vilket är ett medelande till spelaren om man gjort fel input.
                     menuChoisesString = Console.ReadLine();
 
-                    if (menuChoisesString == "1" || menuChoisesString == "2")
+                    /*if (menuChoisesString == "1" || menuChoisesString == "2")
                     {
                         isItValid = true;
-                    }
+                    }*/
                 }
 
                 //Om man svarar 1 fortsätter programmet till startgame klassen och kör koden där. 
@@ -46,7 +39,7 @@ namespace Slutprojektet
                     runGame.lauchGame();
                 }
 
-                // Om man svarar 2 får man en förklaring till hur spelt funkar. 
+                // Om man svarar 2 får man en förklaring till hur spelet fungerar. 
                 else if (menuChoisesString == "2")
                 {
                     gameInformation();
@@ -75,7 +68,11 @@ namespace Slutprojektet
             Console.WriteLine("Det där är inte ett giltigt svar!");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Välj alternativ 1 eller 2, Försök igen!");
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("1. Starta spel!");
+            Console.WriteLine("2. Hur funkar det?");
+            Console.WriteLine();
             Console.Write("Okej, Då väljer jag: ");
         }
 

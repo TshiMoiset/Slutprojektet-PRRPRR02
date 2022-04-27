@@ -6,6 +6,8 @@ namespace Slutprojektet
 {
     public class Tamagotchi
     {
+        Menu goToMenu = new Menu();
+
         int hunger = 0;
         int boredom = 0;
         List<string> words = new List<string>();
@@ -59,7 +61,12 @@ namespace Slutprojektet
             {
                 isAlive = false;
                 Console.WriteLine();
-                Console.WriteLine("GAME OVER");
+                Console.WriteLine("Game over");
+                Console.WriteLine("Din Tamagotchi har dött.");
+                Console.WriteLine("Tryck på [ENTER] för att fortsätta");
+                Console.ReadLine();
+                Console.Clear();
+                goToMenu.runMenu();
             }
         }
 
