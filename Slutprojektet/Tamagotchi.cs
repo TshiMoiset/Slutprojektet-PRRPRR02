@@ -58,8 +58,8 @@ namespace Slutprojektet
         // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
         public void tick()
         {
-            hunger += randomNumber.Next(0, 2);
-            boredom += randomNumber.Next(0, 3);
+            hunger += randomNumber.Next(0, 5);
+            boredom += randomNumber.Next(0, 5);
             if (boredom > 10 || hunger > 10)
             {
                 isAlive = false;

@@ -12,18 +12,31 @@ namespace Slutprojektet
             Console.Title = "Tamagotchi";       // Fönstrets namn. 
             int menuChoises = 0;
             string menuChoisesString = "";      // Tom string för att kunna svara.
+            bool isItValid = false;
 
             // Loopen behövs för att menyn ska skrivas ut. Den ser också till att skriva ut menyn en
             while (menuChoises != 1)    // menuChoises != 1 gör så att kod blocket körs en gång när man trycker på val 1. 
             {
+                //Console.Clear();
                 menuAlternatives();
                 menuChoisesString = Console.ReadLine();
 
-                // Gör om string till en int går inte vidare i spelet om man inte svara utifrån vad programmet frågar efter.
-                while (!int.TryParse(menuChoisesString, out menuChoises))
+                if (menuChoisesString == "1" || menuChoisesString == "2")
+                {
+                    isItValid = true;
+
+                }
+
+                // Gör om string till en int och tvingar spelaren till att svara med en int. Går inte vidare i spelet annars.
+                while (!int.TryParse(menuChoisesString, out menuChoises) || !isItValid)
                 {
                     wrongMenuInput();
                     menuChoisesString = Console.ReadLine();
+
+                    if (menuChoisesString == "1" || menuChoisesString == "2")
+                    {
+                        isItValid = true;
+                    }
                 }
 
                 //Om man svarar 1 fortsätter programmet till startgame klassen och kör koden där. 
@@ -38,6 +51,7 @@ namespace Slutprojektet
                 {
                     gameInformation();
                 }
+
                 Console.WriteLine();
             }
         }
@@ -60,7 +74,7 @@ namespace Slutprojektet
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Det där är inte ett giltigt svar!");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Välj 1 eller 2, Försök igen!");
+            Console.WriteLine("Välj alternativ 1 eller 2, Försök igen!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Okej, Jag väljer då: ");
         }
