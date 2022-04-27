@@ -76,7 +76,7 @@ namespace Slutprojektet
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Välj alternativ 1 eller 2, Försök igen!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Okej, Jag väljer då: ");
+            Console.Write("Okej, Då väljer jag: ");
         }
 
         void gameInformation()
