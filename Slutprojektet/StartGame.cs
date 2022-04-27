@@ -28,31 +28,31 @@ namespace Slutprojektet
                 Console.WriteLine("Vad vill du göra?");
                 Console.WriteLine($"1. Lär {tamagotchi1.name} ett nytt ord.");
                 Console.WriteLine($"2. Hur många ord kan {tamagotchi1.name}?");
-                Console.WriteLine($"3. Hälsa på {tamagotchi1.name}");
-                Console.WriteLine($"4. Mata {tamagotchi1.name}");
-                Console.WriteLine($"5. Göra ingenting");
+                Console.WriteLine($"3. Hälsa på {tamagotchi1.name}.");
+                Console.WriteLine($"4. Mata {tamagotchi1.name}.");
+                Console.WriteLine($"5. Göra ingenting.");
+                Console.WriteLine();
                 answer = Console.ReadLine();
 
                 while (!int.TryParse(answer, out answerInt) || answerInt >= 6)
                 {
-                    Console.WriteLine();
                     Console.Clear();
+                    Console.Write($"Namn: {tamagotchi1.name} || ");
+                    tamagotchi1.printStats();
+                    Console.WriteLine();
+                    Console.WriteLine("Vad vill du göra?");
+                    Console.WriteLine($"1. Lär {tamagotchi1.name} ett nytt ord.");
+                    Console.WriteLine($"2. Hur många ord kan {tamagotchi1.name}?");
+                    Console.WriteLine($"3. Hälsa på {tamagotchi1.name}.");
+                    Console.WriteLine($"4. Mata {tamagotchi1.name}.");
+                    Console.WriteLine($"5. Göra ingenting.");
+                    Console.WriteLine();
+
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Det där är inte ett giltigt svar!");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Välj ett alternativ mellan 1-5, Försök igen!");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine();
-                    Console.Write($"Namn: {tamagotchi1.name} || ");
-                    tamagotchi1.printStats();
-                    Console.WriteLine();
-                    Console.WriteLine();
-                    Console.WriteLine("Vad vill du göra?");
-                    Console.WriteLine($"1. Lära {tamagotchi1.name} ett nytt ord.");
-                    Console.WriteLine($"2. Hur många ord kan {tamagotchi1.name}?");
-                    Console.WriteLine($"3. Hälsa på {tamagotchi1.name}.");
-                    Console.WriteLine($"4. Mata {tamagotchi1.name}.");
-                    Console.WriteLine($"5. Göra ingenting.");
                     Console.Write("Okej, Då väljer jag: ");
                     answer = Console.ReadLine();
                 }
@@ -60,12 +60,11 @@ namespace Slutprojektet
                 if (answer == "1")
                 {
                     Console.Clear();
-                    //Console.WriteLine();
                     Console.Write($"Lär {tamagotchi1.name} ett nytt ord: ");
                     string wordAnswer = Console.ReadLine();
                     tamagotchi1.teach(wordAnswer);
                     Console.WriteLine($"{tamagotchi1.name} har nu lärt sig ordet: {wordAnswer}");
-                    Console.WriteLine("Tryck (på) [ENTER] för att fortsätta!");
+                    Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
                     tamagotchi1.tick();
                     Console.Clear();
@@ -85,12 +84,14 @@ namespace Slutprojektet
 
                 if (answer == "4")
                 {
-                    Console.WriteLine();
+                    Console.Clear();
                     Console.WriteLine($"Vad ska {tamagotchi1.name} äta?");
                     Console.Write($"{tamagotchi1.name} ska äta: ");
                     food = Console.ReadLine().ToLower();
                     Console.WriteLine();
-                    Console.WriteLine("Tack för maten, den var god :)");
+                    Console.Write($"Meddelande från {tamagotchi1.name}: ");
+                    Console.WriteLine("Tack för maten :)");
+                    Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
                     Console.WriteLine();
                     tamagotchi1.tick();
