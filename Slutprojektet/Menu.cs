@@ -12,7 +12,6 @@ namespace Slutprojektet
             Console.Title = "Tamagotchi";       // Fönstrets namn. 
             int menuChoises = 0;
             string menuChoisesString = "";      // Tom string för att kunna svara.
-            bool isItValid = false;
 
             // Loopen behövs för att menyn ska skrivas ut i konsolen. 
             while (menuChoises != 1)    // Så länge menuChoises inte är lika med 1 kommer loopen köras och menyn kommer skrivas ut. 
@@ -20,35 +19,32 @@ namespace Slutprojektet
                 menuAlternatives();     // Skriver ut det som står i metoden, vilket är menyns val alternativ.
                 menuChoisesString = Console.ReadLine();
 
-                // Gör om string till en int och tvingar spelaren till att svara med en int. Går inte vidare i spelet annars.
-                while (!int.TryParse(menuChoisesString, out menuChoises) || !isItValid)
+                // Gör om string till en int och tvingar spelaren till att svara med en int. Svarar spelaren med en siffa/tal som är högre än 3 går spelet inte vidare
+                while (!int.TryParse(menuChoisesString, out menuChoises) || menuChoises >= 3)
                 {
-                    wrongMenuInput();       // Skriver ut det som står i metoden, vilket är ett medelande till spelaren om man gjort fel input.
+                    wrongMenuInput();       // Meddelande till spelaren när de svarar fel. 
                     menuChoisesString = Console.ReadLine();
-
-                    /*if (menuChoisesString == "1" || menuChoisesString == "2")
-                    {
-                        isItValid = true;
-                    }*/
                 }
 
                 //Om man svarar 1 fortsätter programmet till startgame klassen och kör koden där. 
                 if (menuChoisesString == "1")
                 {
-                    Console.Clear();
+                    Console.Clear();        //Raderar allt som tidigare skrivits i konsolen.
                     runGame.lauchGame();
                 }
 
                 // Om man svarar 2 får man en förklaring till hur spelet fungerar. 
                 else if (menuChoisesString == "2")
                 {
-                    gameInformation();
+                    gameplayInformation();
                 }
 
                 Console.WriteLine();
             }
         }
 
+        // För en renare kod har texten till menyn skrivits i en egena metoder.
+        // Metoden skrivs ut när menyns while loop körs. 
         void menuAlternatives()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -60,6 +56,7 @@ namespace Slutprojektet
             Console.WriteLine();
         }
 
+        // Metoden används när spelaren svarat med ett ogiltigt svar.
         void wrongMenuInput()
         {
             Console.WriteLine();
@@ -76,7 +73,8 @@ namespace Slutprojektet
             Console.Write("Okej, Då väljer jag: ");
         }
 
-        void gameInformation()
+        // Metoden körs när spelaren tryckt på alternativ nr 2 och vill få information om hur spelet fungerar. 
+        void gameplayInformation()
         {
             Console.Clear();
             Console.WriteLine("Spelet går ut på att hålla din Tamagotchi vid liv genom att");
