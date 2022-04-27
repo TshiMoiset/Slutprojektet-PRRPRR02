@@ -77,8 +77,12 @@ namespace Slutprojektet
 
                 if (answer == "3")
                 {
-                    tamagotchi1.hi();
+                    Console.WriteLine($"Hälsa på {tamagotchi1.name}.");
+                    Console.WriteLine("Tryck sedan på [ENTER] för att fortsätta!");
                     Console.WriteLine();
+                    Console.ReadLine();
+                    tamagotchi1.hi();
+                    Console.ReadLine();
                     tamagotchi1.tick();
                 }
 

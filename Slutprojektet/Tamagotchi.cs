@@ -11,12 +11,13 @@ namespace Slutprojektet
         int hunger = 0;
         int boredom = 0;
         List<string> words = new List<string>();
+        string[] salutations = { "Hej", "Hej hej", "Tjena", "Hallå", "Hejsan", };
         bool isAlive = true;
 
         Random randomNumber = new Random();
         public string name;
 
-        // Feed behövs för att sänka hungern när man matar tamagotchi.
+        // Behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
             hunger -= 1;
@@ -25,15 +26,8 @@ namespace Slutprojektet
         // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
         public void hi()
         {
-            int i = randomNumber.Next(words.Count);
-            if (words.Count < 0)
-            {
-                Console.WriteLine("?");
-            }
-            else
-            {
-                Console.WriteLine(words[i]);
-            }
+            int i = randomNumber.Next(salutations.Length);
+            Console.WriteLine(salutations[i]);
             reduceBoredom();
         }
 
