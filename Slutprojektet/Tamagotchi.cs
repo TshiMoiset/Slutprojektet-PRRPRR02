@@ -14,6 +14,8 @@ namespace Slutprojektet
         string[] salutations = { "Hej", "Hej hej", "Tjena", "Hallå", "Hejsan", };
         bool isAlive = true;
 
+        bool invalidWord = false;
+
         Random randomNumber = new Random();
         public string name;
 
@@ -34,8 +36,24 @@ namespace Slutprojektet
         // Lägger till ett ord i words, och anropar ReduceBoredom.
         public void teach(string word)
         {
-            words.Add(word);
-            reduceBoredom();
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] == ' ')
+                {
+                    invalidWord = true;
+                }
+
+            }
+            if (invalidWord)
+            {
+                Console.WriteLine("Du har skrivit 2 ord eller fler, skriv ett ord.");
+            }
+            else
+            {
+                reduceBoredom();
+                words.Add(word);
+                Console.WriteLine($"{name} har nu lärt sig ordet: {word}");
+            }
         }
 
         public void showWords()
@@ -80,6 +98,11 @@ namespace Slutprojektet
         private void reduceBoredom()
         {
             boredom -= randomNumber.Next(0, 2);
+        }
+
+        public void anger()
+        {
+
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Slutprojektet
 {
@@ -11,7 +10,6 @@ namespace Slutprojektet
             Menu goToMenu = new Menu();
             // Går till menu klassen för att köra koden där
             goToMenu.runMenu();
-            Console.ReadLine();
         }
     }
 }

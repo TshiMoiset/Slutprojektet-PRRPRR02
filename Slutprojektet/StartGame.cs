@@ -66,7 +66,6 @@ namespace Slutprojektet
                     Console.Write($"Lär {tamagotchi1.name} ett nytt ord: ");
                     string wordAnswer = Console.ReadLine();
                     tamagotchi1.teach(wordAnswer);
-                    Console.WriteLine($"{tamagotchi1.name} har nu lärt sig ordet: {wordAnswer}");
                     Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
                     tamagotchi1.tick();
