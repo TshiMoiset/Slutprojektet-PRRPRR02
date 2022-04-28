@@ -19,6 +19,7 @@ namespace Slutprojektet
             tamagotchi1.name = Console.ReadLine().ToUpper();
             Console.Clear();
 
+            // Hämtar värdet av isAlive. Om isAlive är true körs loopen. Behöver loopen för att köra spelet. 
             while (tamagotchi1.GetAlive())
             {
                 Console.Clear();
@@ -34,6 +35,7 @@ namespace Slutprojektet
                 Console.WriteLine();
                 answer = Console.ReadLine();
 
+                // Gör om stringen till en in. Om användaren svara med en int som är störren än 6 går inte spelet vidare.
                 while (!int.TryParse(answer, out answerInt) || answerInt >= 6)
                 {
                     Console.Clear();
@@ -57,6 +59,7 @@ namespace Slutprojektet
                     answer = Console.ReadLine();
                 }
 
+                // Om användaren svara 1 körs koden. Man lär tamagotchin något
                 if (answer == "1")
                 {
                     Console.Clear();
@@ -70,11 +73,13 @@ namespace Slutprojektet
                     Console.Clear();
                 }
 
+                // Om användaren svara 2 körs koden. Koden hämtar information från metoden. I metoden finns en for loop som loopar igenom listan och skriver ut allt.  
                 if (answer == "2")
                 {
                     tamagotchi1.showWords();
                 }
 
+                // Om användaren svara 3 körs koden. Man hälsar på tamagotchin. Tamagothin kommer svara med en random hälsningfras som finns i en array.  
                 if (answer == "3")
                 {
                     Console.WriteLine($"Hälsa på {tamagotchi1.name}.");
@@ -86,6 +91,7 @@ namespace Slutprojektet
                     tamagotchi1.tick();
                 }
 
+                // Om användaren svara 4 körs koden. Man skriver vad tamagotchin ska äta. 
                 if (answer == "4")
                 {
                     Console.Clear();
@@ -102,6 +108,7 @@ namespace Slutprojektet
                     tamagotchi1.feed();
                 }
 
+                // Om användaren svara 5. Man gör ingenting och därför hämtas information från tick och boredom och hunger går up.
                 if (answer == "5")
                 {
                     tamagotchi1.tick();
