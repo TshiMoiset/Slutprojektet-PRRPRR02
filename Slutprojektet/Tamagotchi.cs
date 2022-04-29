@@ -11,12 +11,13 @@ namespace Slutprojektet
         int hunger = 0;
         int boredom = 0;
         List<string> words = new List<string>();
-        string[] salutations = { "Hej", "Hej hej", "Tjena", "Hallå", "Hejsan", };
-        bool isAlive = true;
+        string[] salutations = { "Hej", "Hej hej", "Tjena", "Hallå", "Hejsan" };
+        public string[] tamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
 
+        bool isAlive = true;
         bool invalidWord = false;
 
-        Random randomNumber = new Random();
+        public Random randomNumber = new Random();
         public string name;
 
         // Behövs för att sänka hungern när man matar tamagotchi.
@@ -33,7 +34,7 @@ namespace Slutprojektet
             reduceBoredom();
         }
 
-        // Lägger till ett ord i words, och anropar ReduceBoredom.
+        // Lägger till ett ord i words, och anropar ReduceBoredom. 
         public void teach(string word)
         {
             for (int i = 0; i < word.Length; i++)
@@ -46,7 +47,8 @@ namespace Slutprojektet
             }
             if (invalidWord)
             {
-                Console.WriteLine("Du har skrivit 2 ord eller fler, skriv ett ord.");
+                Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
+                Console.WriteLine("Försök igen nästa gång!");
             }
             else
             {

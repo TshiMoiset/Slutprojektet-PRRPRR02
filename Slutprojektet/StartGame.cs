@@ -7,17 +7,25 @@ namespace Slutprojektet
     {
         public void lauchGame()
         {
+            Tamagotchi tamagotchi1 = new Tamagotchi();
             int answerInt = 0;
             string answer = "";
             string food = "";
-            Tamagotchi tamagotchi1 = new Tamagotchi();
             tamagotchi1.name = "";
+
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
+            Console.WriteLine("Notera att vi komme välja namn åt din Tamagotchi om du inte väljer.");
             Console.Write("Tamagotchi namn: ");
             tamagotchi1.name = Console.ReadLine().ToUpper();
             Console.Clear();
+
+            if (tamagotchi1.name == " ")
+            {
+                int i = tamagotchi1.randomNumber.Next(tamagotchi1.tamagotchiNames.Length);
+                tamagotchi1.name = tamagotchi1.tamagotchiNames[i];
+            }
 
             // Hämtar värdet av isAlive. Om isAlive är true körs loopen. Behöver loopen för att köra spelet. 
             while (tamagotchi1.GetAlive())
