@@ -13,7 +13,6 @@ namespace Slutprojektet
             string food = "";
             tamagotchi1.name = "";
 
-
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
             Console.WriteLine("Notera att vi komme välja namn åt din Tamagotchi om du inte väljer.");
