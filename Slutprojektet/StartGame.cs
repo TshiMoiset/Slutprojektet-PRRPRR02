@@ -15,7 +15,7 @@ namespace Slutprojektet
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
-            Console.WriteLine("Notera att vi komme välja namn åt din Tamagotchi om du inte väljer.");
+            Console.WriteLine("Notera att vi kommer välja namn åt din Tamagotchi om du inte väljer.");
             Console.Write("Tamagotchi namn: ");
             tamagotchi1.name = Console.ReadLine().ToUpper();
             Console.Clear();
@@ -75,7 +75,6 @@ namespace Slutprojektet
                     tamagotchi1.teach(wordAnswer);
                     Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
-                    tamagotchi1.tick();
                     Console.Clear();
                 }
 
@@ -83,18 +82,19 @@ namespace Slutprojektet
                 if (answer == "2")
                 {
                     tamagotchi1.showWords();
+                    Console.ReadLine();
+                    Console.Clear();
                 }
 
                 // Om användaren svara 3 körs koden. Man hälsar på tamagotchin. Tamagothin kommer svara med en random hälsningfras som finns i en array.  
                 if (answer == "3")
                 {
-                    Console.WriteLine($"Hälsa på {tamagotchi1.name}.");
+                    Console.WriteLine($"Säg något till {tamagotchi1.name}.");
                     Console.WriteLine("Tryck sedan på [ENTER] för att fortsätta!");
                     Console.WriteLine();
                     Console.ReadLine();
                     tamagotchi1.hi();
                     Console.ReadLine();
-                    tamagotchi1.tick();
                 }
 
                 // Om användaren svara 4 körs koden. Man skriver vad tamagotchin ska äta. 
@@ -106,11 +106,10 @@ namespace Slutprojektet
                     food = Console.ReadLine().ToLower();
                     Console.WriteLine();
                     Console.Write($"Meddelande från {tamagotchi1.name}: ");
-                    Console.WriteLine("Tack för maten :)");
+                    Console.WriteLine("Tack för maten :), Var det här en invandrar eller vit måltid?");
                     Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
                     Console.WriteLine();
-                    tamagotchi1.tick();
                     tamagotchi1.feed();
                 }
 

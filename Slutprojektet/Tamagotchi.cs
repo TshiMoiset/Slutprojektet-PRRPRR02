@@ -23,7 +23,7 @@ namespace Slutprojektet
         // Behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
-            hunger -= 1;
+            hunger -= randomNumber.Next(1, 3);
         }
 
         // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
@@ -60,9 +60,14 @@ namespace Slutprojektet
 
         public void showWords()
         {
+            if (words.Count == 0)
+            {
+                Console.WriteLine("Du har inte lärt mig något!");
+            }
             for (int i = 0; i < words.Count; i++)
             {
                 Console.WriteLine(words[i]);
+
             }
         }
 
@@ -100,11 +105,6 @@ namespace Slutprojektet
         private void reduceBoredom()
         {
             boredom -= randomNumber.Next(0, 2);
-        }
-
-        public void anger()
-        {
-
         }
     }
 }
