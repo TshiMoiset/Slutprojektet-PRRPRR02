@@ -8,14 +8,49 @@ namespace Slutprojektet
     {
         Menu goToMenu = new Menu();
 
-        int hunger = 0;
-        int boredom = 0;
-        List<string> words = new List<string>();
-        string[] salutations = { "Hej", "Hej hej", "Tjena", "Hallå", "Hejsan" };
-        public string[] tamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
+        // Använder properties för att inte behöva skapa hunger/bordeom i de andra arven.
+        protected int hunger;
+        public int Hunger
+        {
+            get { return hunger; }
+            set { hunger = value; }
+        }
 
-        bool isAlive = true;
-        bool invalidWord = false;
+        protected int boredom;
+        public int Boredom
+        {
+            get { return boredom; }
+            set { boredom = value; }
+        }
+
+        protected bool isAlive;
+        public bool IsAlive
+        {
+            get { return isAlive; }
+            set { isAlive = value; }
+        }
+
+
+        protected List<string> words;
+        public List<string> Words
+        {
+            get { return words; }
+            set { words = value; }
+        }
+
+        protected string[] salutations;
+        public string[] Salutations
+        {
+            get { return salutations; }
+            set { salutations = value; }
+        }
+
+        protected string[] tamagotchiNames;
+        public string[] TamagotchiNames
+        {
+            get { return tamagotchiNames; }
+            set { tamagotchiNames = value; }
+        }
 
         public Random randomNumber = new Random();
         public string name;
@@ -23,7 +58,7 @@ namespace Slutprojektet
         // Behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
-            hunger -= randomNumber.Next(1, 3);
+            hunger -= randomNumber.Next(1, 2);
         }
 
         // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
@@ -32,30 +67,6 @@ namespace Slutprojektet
             int i = randomNumber.Next(salutations.Length);
             Console.WriteLine(salutations[i]);
             reduceBoredom();
-        }
-
-        // Lägger till ett ord i words, och anropar ReduceBoredom. 
-        public void teach(string word)
-        {
-            for (int i = 0; i < word.Length; i++)
-            {
-                if (word[i] == ' ')
-                {
-                    invalidWord = true;
-                }
-
-            }
-            if (invalidWord)
-            {
-                Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
-                Console.WriteLine("Försök igen nästa gång!");
-            }
-            else
-            {
-                reduceBoredom();
-                words.Add(word);
-                Console.WriteLine($"{name} har nu lärt sig ordet: {word}");
-            }
         }
 
         public void showWords()
@@ -67,15 +78,13 @@ namespace Slutprojektet
             for (int i = 0; i < words.Count; i++)
             {
                 Console.WriteLine(words[i]);
-
             }
         }
 
-        // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
-        public void tick()
+        public virtual void tick()
         {
-            hunger += randomNumber.Next(0, 5);
-            boredom += randomNumber.Next(0, 5);
+            hunger += randomNumber.Next(0, 2);
+            boredom += randomNumber.Next(0, 2);
             if (boredom > 10 || hunger > 10)
             {
                 isAlive = false;
@@ -102,7 +111,7 @@ namespace Slutprojektet
         }
 
         // Sänker boredom.
-        private void reduceBoredom()
+        public void reduceBoredom()
         {
             boredom -= randomNumber.Next(0, 2);
         }
