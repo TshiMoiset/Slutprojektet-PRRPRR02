@@ -8,10 +8,13 @@ namespace Slutprojektet
         Menu goToMenu = new Menu();
         bool invalidWord = false;
 
+        List<string> words;
+
         public TeenTamagotchi()
-        { }
-        string[] Salutations = { "Läget", "Tjena", "Morsning", "Tjingeling", "Tjenixen" };
-        string[] TamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
+        {
+            string[] Salutations = { "Läget", "Tjena", "Morsning", "Tjingeling", "Tjenixen" };
+            string[] TamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
+        }
 
         // Lägger till ett ord i words, och anropar ReduceBoredom. 
         public void teach(string word)
@@ -23,6 +26,7 @@ namespace Slutprojektet
                     invalidWord = true;
                 }
             }
+
             if (invalidWord)
             {
                 Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
@@ -44,7 +48,7 @@ namespace Slutprojektet
             Boredom += randomNumber.Next(2, 3);
             if (Boredom > 10 || Hunger > 10)
             {
-                isAlive = false;
+                IsAlive = false;
                 Console.WriteLine();
                 Console.WriteLine("Game over");
                 Console.WriteLine("Din Tamagotchi har dött.");
@@ -52,6 +56,26 @@ namespace Slutprojektet
                 Console.ReadLine();
                 Console.Clear();
                 goToMenu.runMenu();
+            }
+        }
+
+        // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
+        public void printStats()
+        {
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vid Liv: {isAlive} || ");
+            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
+        }
+
+        public void showWords()
+        {
+            if (words.Count == 0)
+            {
+                Console.WriteLine("Du har inte lärt mig något!");
+            }
+
+            for (int i = 0; i < words.Count; i++)
+            {
+                Console.WriteLine(words[i]);
             }
         }
     }

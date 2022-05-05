@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,8 @@ namespace Slutprojektet
     public class Tamagotchi
     {
         Menu goToMenu = new Menu();
-
-        // Använder properties för att inte behöva skapa hunger/bordeom i de andra arven.
+        // Använder properties för att inte behöva skapa hunger, bordeom etc i de andra arven.
+        // Protected gör så att åtkomsten är begränsad till den eller de typer som kommer från den innehållande klassen.
         protected int hunger;
         public int Hunger
         {
@@ -23,19 +24,11 @@ namespace Slutprojektet
             set { boredom = value; }
         }
 
-        protected bool isAlive;
+        protected bool isAlive = true;
         public bool IsAlive
         {
             get { return isAlive; }
             set { isAlive = value; }
-        }
-
-
-        protected List<string> words;
-        public List<string> Words
-        {
-            get { return words; }
-            set { words = value; }
         }
 
         protected string[] salutations;
@@ -69,18 +62,6 @@ namespace Slutprojektet
             reduceBoredom();
         }
 
-        public void showWords()
-        {
-            if (words.Count == 0)
-            {
-                Console.WriteLine("Du har inte lärt mig något!");
-            }
-            for (int i = 0; i < words.Count; i++)
-            {
-                Console.WriteLine(words[i]);
-            }
-        }
-
         public virtual void tick()
         {
             hunger += randomNumber.Next(0, 2);
@@ -96,12 +77,6 @@ namespace Slutprojektet
                 Console.Clear();
                 goToMenu.runMenu();
             }
-        }
-
-        // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
-        public void printStats()
-        {
-            Console.WriteLine($"Tråkighet: {boredom} || Hunger: {hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
         }
 
         // Returnerar värdet som isAlive har.

@@ -8,6 +8,7 @@ namespace Slutprojektet
         {
             // Anropar klassen menu
             Menu goToMenu = new Menu();
+            Console.Title = "Tamagotchi";
             // Går till menu klassen för att köra koden där
             goToMenu.runMenu();
         }
