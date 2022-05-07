@@ -45,6 +45,14 @@ namespace Slutprojektet
             set { tamagotchiNames = value; }
         }
 
+        protected List<string> words;
+        public List<string> Words
+        {
+            get { return words; }
+            set { words = value; }
+        }
+
+        bool invalidWord = false;
         public Random randomNumber = new Random();
         public string name;
 
@@ -60,6 +68,13 @@ namespace Slutprojektet
             int i = randomNumber.Next(salutations.Length);
             Console.WriteLine(salutations[i]);
             reduceBoredom();
+        }
+
+        // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
+        public virtual void printStats()
+        {
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vid Liv: {isAlive} || ");
+            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
         }
 
         public virtual void tick()
@@ -79,6 +94,31 @@ namespace Slutprojektet
             }
         }
 
+        // Lägger till ett ord i words, och anropar ReduceBoredom. 
+        public virtual void teach(string word)
+        {
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (word[i] == ' ')
+                {
+                    invalidWord = true;
+                }
+            }
+
+            if (invalidWord)
+            {
+                Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
+                Console.WriteLine("Försök igen nästa gång!");
+            }
+
+            else
+            {
+                reduceBoredom();
+                words.Add(word);
+                Console.WriteLine($"{name} har nu lärt sig ordet: {word}");
+            }
+        }
+
         // Returnerar värdet som isAlive har.
         public bool GetAlive()
         {
@@ -88,7 +128,22 @@ namespace Slutprojektet
         // Sänker boredom.
         public void reduceBoredom()
         {
-            boredom -= randomNumber.Next(0, 2);
+            boredom -= randomNumber.Next(1, 2);
+        }
+
+        public virtual void showWords()
+        {
+            if (words.Count == 0)
+            {
+
+                Console.WriteLine("Du har inte lärt mig något!");
+                tick();
+            }
+
+            for (int i = 0; i < words.Count; i++)
+            {
+                Console.WriteLine(words[i]);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Slutprojektet
             // Loopen behövs för att menyn ska skrivas ut i konsolen. 
             while (menuChoises != 1)    // Så länge menuChoises inte är lika med 1 kommer loopen köras och menyn kommer skrivas ut. 
             {
-                menuAlternatives();     // Skriver ut det som står i metoden, vilket är menyns val alternativ.
+                menuAlternatives();     // Skriver ut detsom står i metoden, vilket är menyns val alternativ.
                 menuChoisesString = Console.ReadLine();
 
                 // Gör om string till en int och tvingar spelaren till att svara med en int. Svarar spelaren med en siffa/tal som är högre än 3 går spelet inte vidare

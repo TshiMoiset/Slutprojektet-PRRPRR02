@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Dynamic;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,13 @@ namespace Slutprojektet
     {
         public void lauchGame()
         {
-            Tamagotchi tamagotchi;
+            TeenTamagotchi tamagotchi = new TeenTamagotchi();
+            AdultTamagotchi adultTamagotchi;
+
             int answerInt = 0;
             string answer = "";
             string food = "";
+            Random randomNumber = new Random();
 
             while (answer != "vuxen" || answer != "barn")
             {
@@ -31,7 +35,7 @@ namespace Slutprojektet
                 if (answer == "vuxen")
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    tamagotchi = new AdultTamagotchi();
+                    adultTamagotchi = new AdultTamagotchi();
 
                     Console.Clear();
                     Console.WriteLine("Work in progress");
@@ -42,14 +46,22 @@ namespace Slutprojektet
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    tamagotchi = new TeenTamagotchi();
+                    //tamagotchi = new TeenTamagotchi();
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Välj ett namn åt din Tamagotchi, tryck sedan [ENTER] för att fortsätta.");
                     Console.WriteLine("Notera att vi kommer välja namn åt din Tamagotchi om du inte väljer.");
+                    Console.WriteLine();
                     Console.Write("Tamagotchi namn: ");
                     tamagotchi.name = Console.ReadLine().ToUpper();
+
+                    if (tamagotchi.name == " ")
+                    {
+                        /*int nameIndex = tamagotchi.randomNumber.Next(tamagotchi.TamagotchiNames.Length);
+                        tamagotchi.name = tamagotchi.TamagotchiNames[nameIndex];*/
+                        Console.WriteLine(tamagotchi.TamagotchiNames.Length);
+                    }
+
                     runTeenTamagotchi();
-                    //Console.Clear();
                 }
             }
 
@@ -60,7 +72,7 @@ namespace Slutprojektet
                 {
                     Console.Clear();
                     Console.Write($"Namn: {tamagotchi.name} || ");
-                    //tamagotchi.printStats();
+                    tamagotchi.printStats();
                     Console.WriteLine();
                     Console.WriteLine("Vad vill du göra?");
                     Console.WriteLine($"1. Lär {tamagotchi.name} ett nytt ord.");
@@ -68,15 +80,16 @@ namespace Slutprojektet
                     Console.WriteLine($"3. Hälsa på {tamagotchi.name}.");
                     Console.WriteLine($"4. Mata {tamagotchi.name}.");
                     Console.WriteLine($"5. Göra ingenting.");
+                    Console.WriteLine($"6. Åk till stan med {tamagotchi.name}s bil.");
                     Console.WriteLine();
                     answer = Console.ReadLine();
 
-                    // Gör om stringen till en in. Om användaren svara med en int som är störren än 6 går inte spelet vidare.
+                    // Gör om stringen till en int. Om användaren svara med en int som är störren än 6 går inte spelet vidare.
                     while (!int.TryParse(answer, out answerInt) || answerInt >= 6)
                     {
                         Console.Clear();
                         Console.Write($"Namn: {tamagotchi.name} || ");
-                        //tamagotchi.printStats();
+                        tamagotchi.printStats();
                         Console.WriteLine();
                         Console.WriteLine("Vad vill du göra?");
                         Console.WriteLine($"1. Lär {tamagotchi.name} ett nytt ord.");
@@ -84,12 +97,13 @@ namespace Slutprojektet
                         Console.WriteLine($"3. Hälsa på {tamagotchi.name}.");
                         Console.WriteLine($"4. Mata {tamagotchi.name}.");
                         Console.WriteLine($"5. Göra ingenting.");
+                        Console.WriteLine($"6. Åk till stan med {tamagotchi.name}s bil.");
                         Console.WriteLine();
 
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Det där är inte ett giltigt svar!");
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("Välj ett alternativ mellan 1-5, Försök igen!");
+                        Console.WriteLine("Välj ett alternativ mellan 1-6, Försök igen!");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write("Okej, Då väljer jag: ");
                         answer = Console.ReadLine();
@@ -101,16 +115,18 @@ namespace Slutprojektet
                         Console.Clear();
                         Console.Write($"Lär {tamagotchi.name} ett nytt ord: ");
                         string wordAnswer = Console.ReadLine();
-                        //tamagotchi.teach(wordAnswer);
+                        tamagotchi.teach(wordAnswer);
                         Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                         Console.ReadLine();
+                        tamagotchi.tick();
                         Console.Clear();
                     }
 
                     // Om användaren svara 2 körs koden. Koden hämtar information från metoden. I metoden finns en for loop som loopar igenom listan och skriver ut allt.  
                     if (answer == "2")
                     {
-                        //tamagotchi.showWords();
+                        tamagotchi.showWords();
+                        Console.WriteLine("Tryck på [ENTER] för att fortsätta");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -122,7 +138,8 @@ namespace Slutprojektet
                         Console.WriteLine("Tryck sedan på [ENTER] för att fortsätta!");
                         Console.WriteLine();
                         Console.ReadLine();
-                        //tamagotchi.hi();
+                        tamagotchi.hi();
+                        tamagotchi.tick();
                         Console.ReadLine();
                     }
 
@@ -134,20 +151,22 @@ namespace Slutprojektet
                         Console.Write($"{tamagotchi.name} ska äta: ");
                         food = Console.ReadLine().ToLower();
                         Console.WriteLine();
-                        Console.Write($"Meddelande från {tamagotchi.name}: ");
-                        Console.WriteLine("Tack för maten :), Var det här en invandrar eller vit måltid?");
+                        Console.WriteLine("Tack för maten :)");
                         Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                         Console.ReadLine();
                         Console.WriteLine();
-                        //tamagotchi.feed();
+                        tamagotchi.feed();
                     }
 
-                    // Om användaren svara 5. Man gör ingenting och därför hämtas information från tick och boredom och hunger går up.
                     if (answer == "5")
                     {
                         tamagotchi.tick();
                     }
-                    //return tamagotchi;
+
+                    if (answer == "6")
+                    {
+
+                    }
                 }
             }
         }

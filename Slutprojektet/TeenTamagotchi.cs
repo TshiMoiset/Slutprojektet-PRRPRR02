@@ -8,7 +8,7 @@ namespace Slutprojektet
         Menu goToMenu = new Menu();
         bool invalidWord = false;
 
-        List<string> words;
+        List<string> words = new List<string>();
 
         public TeenTamagotchi()
         {
@@ -16,8 +16,15 @@ namespace Slutprojektet
             string[] TamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
         }
 
+        // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
+        public override void printStats()
+        {
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} || ");
+            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
+        }
+
         // Lägger till ett ord i words, och anropar ReduceBoredom. 
-        public void teach(string word)
+        public override void teach(string word)
         {
             for (int i = 0; i < word.Length; i++)
             {
@@ -59,18 +66,14 @@ namespace Slutprojektet
             }
         }
 
-        // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
-        public void printStats()
-        {
-            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vid Liv: {isAlive} || ");
-            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
-        }
-
-        public void showWords()
+        public override void showWords()
         {
             if (words.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Du har inte lärt mig något!");
+                Console.ForegroundColor = ConsoleColor.White;
+                tick();
             }
 
             for (int i = 0; i < words.Count; i++)
