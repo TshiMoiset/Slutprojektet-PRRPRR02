@@ -20,7 +20,6 @@ namespace Slutprojektet
         public override void printStats()
         {
             Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} || ");
-            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
         }
 
         // Lägger till ett ord i words, och anropar ReduceBoredom. 

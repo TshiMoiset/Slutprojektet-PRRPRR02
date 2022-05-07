@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Linq;
 using System.Dynamic;
 using System;
@@ -11,11 +12,11 @@ namespace Slutprojektet
         {
             TeenTamagotchi tamagotchi = new TeenTamagotchi();
             AdultTamagotchi adultTamagotchi;
+            Car teenTamagotchiCar = new TeenCar();
 
             int answerInt = 0;
             string answer = "";
             string food = "";
-            Random randomNumber = new Random();
 
             while (answer != "vuxen" || answer != "barn")
             {
@@ -74,6 +75,9 @@ namespace Slutprojektet
                     Console.Write($"Namn: {tamagotchi.name} || ");
                     tamagotchi.printStats();
                     Console.WriteLine();
+                    teenTamagotchiCar.carStats();
+                    Console.WriteLine();
+                    Console.WriteLine();
                     Console.WriteLine("Vad vill du göra?");
                     Console.WriteLine($"1. Lär {tamagotchi.name} ett nytt ord.");
                     Console.WriteLine($"2. Hur många ord kan {tamagotchi.name}?");
@@ -85,7 +89,7 @@ namespace Slutprojektet
                     answer = Console.ReadLine();
 
                     // Gör om stringen till en int. Om användaren svara med en int som är störren än 6 går inte spelet vidare.
-                    while (!int.TryParse(answer, out answerInt) || answerInt >= 6)
+                    while (!int.TryParse(answer, out answerInt) || answerInt >= 7)
                     {
                         Console.Clear();
                         Console.Write($"Namn: {tamagotchi.name} || ");
@@ -165,7 +169,11 @@ namespace Slutprojektet
 
                     if (answer == "6")
                     {
-
+                        teenTamagotchiCar.useCar();
+                        Console.WriteLine($"{tamagotchi.name} åkte till Stockholm");
+                        Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
+                        Console.ReadLine();
+                        tamagotchi.reduceBoredom();
                     }
                 }
             }
