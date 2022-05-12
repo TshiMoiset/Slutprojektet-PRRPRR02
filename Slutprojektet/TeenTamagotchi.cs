@@ -10,16 +10,16 @@ namespace Slutprojektet
 
         List<string> words = new List<string>();
 
-        public TeenTamagotchi()
+        string[] Salutations = { "Läget", "Tjena", "Morsning", "Tjingeling", "Tjenixen" };
+
+        /*public TeenTamagotchi()
         {
-            string[] Salutations = { "Läget", "Tjena", "Morsning", "Tjingeling", "Tjenixen" };
-            string[] TamagotchiNames = { "LEAH", "ELLIE", "MILA", "VINCENT", "MATTEO", "AUGUST" };
-        }
+        }*/
 
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public override void printStats()
         {
-            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} || ");
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Ålder: Tonåring || Vid Liv: {isAlive} || ");
         }
 
         // Lägger till ett ord i words, och anropar ReduceBoredom. 
@@ -61,12 +61,14 @@ namespace Slutprojektet
                 Console.WriteLine("Tryck på [ENTER] för att fortsätta");
                 Console.ReadLine();
                 Console.Clear();
-                goToMenu.runMenu();
+                goToMenu.RunMenu();
             }
         }
 
+        // Visar vilka ord tamagotchin kan.
         public override void showWords()
         {
+            // Om man inte har lärt tamagotchin något ord körs den här koden. 
             if (words.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -75,6 +77,7 @@ namespace Slutprojektet
                 tick();
             }
 
+            // Om tamagotchin kan ord, körs for loopen igenom metoden och skriver ur de. 
             for (int i = 0; i < words.Count; i++)
             {
                 Console.WriteLine(words[i]);

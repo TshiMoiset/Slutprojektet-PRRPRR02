@@ -38,13 +38,6 @@ namespace Slutprojektet
             set { salutations = value; }
         }
 
-        protected string[] tamagotchiNames;
-        public string[] TamagotchiNames
-        {
-            get { return tamagotchiNames; }
-            set { tamagotchiNames = value; }
-        }
-
         protected List<string> words;
         public List<string> Words
         {
@@ -90,7 +83,7 @@ namespace Slutprojektet
                 Console.WriteLine("Tryck på [ENTER] för att fortsätta");
                 Console.ReadLine();
                 Console.Clear();
-                goToMenu.runMenu();
+                goToMenu.RunMenu();
             }
         }
 
@@ -140,9 +133,13 @@ namespace Slutprojektet
                 tick();
             }
 
-            for (int i = 0; i < words.Count; i++)
+            else
             {
-                Console.WriteLine(words[i]);
+                Console.WriteLine($"{name} kan orden:");
+                for (int i = 0; i < words.Count; i++)
+                {
+                    Console.WriteLine(words[i]);
+                }
             }
         }
     }

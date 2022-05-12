@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Slutprojektet
 {
@@ -10,7 +11,7 @@ namespace Slutprojektet
             Menu goToMenu = new Menu();
             Console.Title = "Tamagotchi";
             // Går till menu klassen för att köra koden där
-            goToMenu.runMenu();
+            goToMenu.RunMenu();
         }
     }
 }

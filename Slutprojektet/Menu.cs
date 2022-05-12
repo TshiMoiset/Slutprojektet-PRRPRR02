@@ -4,7 +4,7 @@ namespace Slutprojektet
 {
     public class Menu
     {
-        public void runMenu()
+        public void RunMenu()
         {
             StartGame runGame = new StartGame();
 
@@ -15,13 +15,13 @@ namespace Slutprojektet
             // Loopen behövs för att menyn ska skrivas ut i konsolen. 
             while (menuChoises != 1)    // Så länge menuChoises inte är lika med 1 kommer loopen köras och menyn kommer skrivas ut. 
             {
-                menuAlternatives();     // Skriver ut detsom står i metoden, vilket är menyns val alternativ.
+                MenuAlternatives();     // Skriver ut detsom står i metoden, vilket är menyns val alternativ.
                 menuChoisesString = Console.ReadLine();
 
                 // Gör om string till en int och tvingar spelaren till att svara med en int. Svarar spelaren med en siffa/tal som är högre än 3 går spelet inte vidare
                 while (!int.TryParse(menuChoisesString, out menuChoises) || menuChoises >= 3)
                 {
-                    wrongMenuInput();       // Meddelande till spelaren när de svarar fel. 
+                    WrongMenuInput();       // Meddelande till spelaren när de svarar fel. 
                     menuChoisesString = Console.ReadLine();
                 }
 
@@ -29,13 +29,13 @@ namespace Slutprojektet
                 if (menuChoisesString == "1")
                 {
                     Console.Clear();        //Raderar allt som tidigare skrivits i konsolen.
-                    runGame.lauchGame();
+                    runGame.LauchGame();
                 }
 
                 // Om man svarar 2 får man en förklaring till hur spelet fungerar. 
                 else if (menuChoisesString == "2")
                 {
-                    gameplayInformation();
+                    GameplayInformation();
                 }
 
                 Console.WriteLine();
@@ -44,7 +44,7 @@ namespace Slutprojektet
 
         // För en renare kod har texten till menyn skrivits i en egena metoder.
         // Metoden skrivs ut när menyns while loop körs. 
-        void menuAlternatives()
+        void MenuAlternatives()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Välkommen till Tamagotchi!");
@@ -56,7 +56,7 @@ namespace Slutprojektet
         }
 
         // Metoden används när spelaren svarat med ett ogiltigt svar.
-        void wrongMenuInput()
+        void WrongMenuInput()
         {
             Console.WriteLine();
             Console.Clear();
@@ -73,7 +73,7 @@ namespace Slutprojektet
         }
 
         // Metoden körs när spelaren tryckt på alternativ nr 2 och vill få information om hur spelet fungerar. 
-        void gameplayInformation()
+        void GameplayInformation()
         {
             Console.Clear();
             Console.WriteLine("Spelet går ut på att hålla din Tamagotchi vid liv genom att");
@@ -82,6 +82,5 @@ namespace Slutprojektet
             Console.WriteLine("DÖD TAMAGOTCHI = GAME OVER");
             Console.WriteLine("Lycka till!");
         }
-
     }
 }
