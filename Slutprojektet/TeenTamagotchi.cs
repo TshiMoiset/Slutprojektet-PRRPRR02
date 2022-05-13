@@ -12,10 +12,6 @@ namespace Slutprojektet
 
         string[] Salutations = { "Läget", "Tjena", "Morsning", "Tjingeling", "Tjenixen" };
 
-        /*public TeenTamagotchi()
-        {
-        }*/
-
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public override void printStats()
         {
@@ -68,7 +64,7 @@ namespace Slutprojektet
         // Visar vilka ord tamagotchin kan.
         public override void showWords()
         {
-            // Om man inte har lärt tamagotchin något ord körs den här koden. 
+            // Om listan med ord är tom, d.v.s
             if (words.Count == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -82,6 +78,14 @@ namespace Slutprojektet
             {
                 Console.WriteLine(words[i]);
             }
+        }
+
+        // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
+        public void hi()
+        {
+            int pickedSalutation = randomNumber.Next(Salutations.Length);
+            Console.WriteLine(Salutations[pickedSalutation]);
+            reduceBoredom();
         }
     }
 }

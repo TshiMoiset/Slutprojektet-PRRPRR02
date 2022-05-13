@@ -45,6 +45,13 @@ namespace Slutprojektet
             set { words = value; }
         }
 
+        protected int age;
+        public int Age
+        {
+            get { return age; }
+            set { age = value; }
+        }
+
         bool invalidWord = false;
         public Random randomNumber = new Random();
         public string name;
@@ -53,14 +60,6 @@ namespace Slutprojektet
         public void feed()
         {
             hunger -= randomNumber.Next(1, 2);
-        }
-
-        // Skriver ut ett slumpat ord från words, och anropar ReduceBoredom.
-        public void hi()
-        {
-            int i = randomNumber.Next(salutations.Length);
-            Console.WriteLine(salutations[i]);
-            reduceBoredom();
         }
 
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
