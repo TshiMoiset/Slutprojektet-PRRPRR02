@@ -45,13 +45,6 @@ namespace Slutprojektet
             set { words = value; }
         }
 
-        protected int age;
-        public int Age
-        {
-            get { return age; }
-            set { age = value; }
-        }
-
         bool invalidWord = false;
         public Random randomNumber = new Random();
         public string name;
@@ -59,7 +52,7 @@ namespace Slutprojektet
         // Behövs för att sänka hungern när man matar tamagotchi.
         public void feed()
         {
-            hunger -= randomNumber.Next(1, 2);
+            hunger -= randomNumber.Next(1, 3);
         }
 
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
