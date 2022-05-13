@@ -11,8 +11,6 @@ namespace Slutprojektet
     {
         public void LauchGame()
         {
-
-
             string answer = "";
 
             // While loopen kommer köras tills att man har valt att köra som vuxen eller tonåring.
@@ -52,6 +50,7 @@ namespace Slutprojektet
             }
         }
 
+        // Koden för att köra som tonåring tamagotchin.
         void TeenTamagotchiGameMode()
         {
             TeenTamagotchi tamagotchi = new TeenTamagotchi();
@@ -154,6 +153,7 @@ namespace Slutprojektet
             }
         }
 
+        // Koden för att köra som vuxen tamagotchi
         void AdultTamagotchiGameMode()
         {
             AdultTamagotchi tamagotchi = new AdultTamagotchi();
@@ -177,7 +177,6 @@ namespace Slutprojektet
                 Console.Clear();
                 Console.Write($"Namn: {tamagotchi.name} || ");
                 tamagotchi.printStats();
-
                 Console.Write($"Namn: {pet.name} || ");
                 pet.printStats();
 
@@ -187,18 +186,20 @@ namespace Slutprojektet
                 Console.WriteLine($"2. Vilka tal kan {tamagotchi.name}?");
                 Console.WriteLine($"3. Hälsa på {tamagotchi.name}.");
                 Console.WriteLine($"4. Mata {tamagotchi.name}");
-                Console.WriteLine($"5. Göra ingenting.");
+                Console.WriteLine($"5. Lek med husdjuret.");
+                Console.WriteLine($"6. Mata husdjuret.");
+                Console.WriteLine($"7. Göra ingenting.");
                 Console.WriteLine();
                 answer = Console.ReadLine();
 
                 // Gör om stringen till en int. Om användaren svara med en int som är störren än eller lika med 6 går inte spelet vidare.
                 // Gör även att man man måste svara med en int.
-                while (!int.TryParse(answer, out answerInt) || answerInt >= 6)
+                while (!int.TryParse(answer, out answerInt) || answerInt >= 8)
                 {
                     Console.Clear();
                     Console.Write($"Namn: {tamagotchi.name} || ");
                     tamagotchi.printStats();
-                    Console.Write($"Namn: {pet.name}");
+                    Console.Write($"Namn: {pet.name} || ");
                     pet.printStats();
                     Console.WriteLine();
                     Console.WriteLine("Vad vill du göra?");
@@ -214,7 +215,7 @@ namespace Slutprojektet
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Det där är inte ett giltigt svar!");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Välj ett alternativ mellan 1-5, Försök igen!");
+                    Console.WriteLine("Välj ett alternativ mellan 1-7, Försök igen!");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("Okej, Då väljer jag: ");
                     answer = Console.ReadLine();
@@ -242,15 +243,18 @@ namespace Slutprojektet
                         numberAnswer = Console.ReadLine();
                     }
 
-
                     tamagotchi.teachNewNumber(learnNumber);
                     Console.WriteLine(learnNumber);
+
+                    pet.tick();
                 }
 
                 // Väljer man 2 körs koden och spelaren får se vilka tal tamagitchin kan
                 if (answer == "2")
                 {
                     tamagotchi.ShowKnownNumbers();
+                    Console.WriteLine();
+                    Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
                     pet.tick();
                 }
@@ -263,7 +267,7 @@ namespace Slutprojektet
                     Console.WriteLine();
                     Console.ReadLine();
                     tamagotchi.hi();
-                    tamagotchi.tick();
+                    tamagotchi.reduceBoredom();
                     pet.tick();
                     Console.ReadLine();
                 }
@@ -278,6 +282,7 @@ namespace Slutprojektet
                     tamagotchi.feed();
                 }
 
+                // Husdjurets boredom går ner samt tamagotchins. Men hungern går upp för båda.
                 if (answer == "5")
                 {
                     pet.reduceBoredom();
@@ -285,6 +290,7 @@ namespace Slutprojektet
                     tamagotchi.reduceBoredom();
                 }
 
+                // Koden körs och husdjurets hunger går ner.
                 if (answer == "6")
                 {
                     pet.feed();
