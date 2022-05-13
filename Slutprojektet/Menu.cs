@@ -77,8 +77,11 @@ namespace Slutprojektet
         {
             Console.Clear();
             Console.WriteLine("Spelet går ut på att hålla din Tamagotchi vid liv genom att");
-            Console.WriteLine("välja mellan att lära den ett nytt ord/siffror, hälsa på den, mata den eller göra ingenting.");
-            Console.WriteLine("Varje gång du gör ett val ökar hunger och boredom eller så sjunker de, och om någon av de blir över 10 så DÖR din Tamagotchi.");
+            Console.WriteLine("Du kommer att få välja mellan att köra vuxen eller tonåring");
+            Console.WriteLine("Blir Tråkighet och Hunger mer en 15 på vuxen förlorar du.");
+            Console.WriteLine("Blir Tråkighet och Hunger mer en 10 på tonåring förlorar du.");
+            Console.WriteLine("När man kör som vuxen får man också ett djur till. Hamnar djurets tråkighet och hunger över 13 förlorar du.");
+            Console.WriteLine("Välja mellan att lära den ett nytt ord/siffror, hälsa på den, mata den eller göra ingenting.");
             Console.WriteLine("DÖD TAMAGOTCHI = GAME OVER");
             Console.WriteLine("Lycka till!");
         }

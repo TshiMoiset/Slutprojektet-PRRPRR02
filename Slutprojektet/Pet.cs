@@ -11,9 +11,9 @@ namespace Slutprojektet
 
         public override void tick()
         {
-            hunger += randomNumber.Next(0, 2);
-            boredom += randomNumber.Next(0, 2);
-            if (boredom > 10 || hunger > 10)
+            hunger += randomNumber.Next(1, 3);
+            boredom += randomNumber.Next(1, 3);
+            if (boredom > 13 || hunger > 13)
             {
                 isAlive = false;
                 Console.WriteLine();

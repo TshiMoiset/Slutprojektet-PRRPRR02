@@ -45,6 +45,7 @@ namespace Slutprojektet
 
         public void ShowKnownNumbers()
         {
+            Console.WriteLine();
             Console.WriteLine($"{name} kan talen:");
             Console.WriteLine();
             foreach (var value in learnedNumber)
