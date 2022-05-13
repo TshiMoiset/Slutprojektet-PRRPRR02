@@ -77,7 +77,7 @@ namespace Slutprojektet
         {
             Console.Clear();
             Console.WriteLine("Spelet går ut på att hålla din Tamagotchi vid liv genom att");
-            Console.WriteLine("välja mellan att lära den ett nytt ord, hälsa på den, mata den eller göra ingenting.");
+            Console.WriteLine("välja mellan att lära den ett nytt ord/siffror, hälsa på den, mata den eller göra ingenting.");
             Console.WriteLine("Varje gång du gör ett val ökar hunger och boredom eller så sjunker de, och om någon av de blir över 10 så DÖR din Tamagotchi.");
             Console.WriteLine("DÖD TAMAGOTCHI = GAME OVER");
             Console.WriteLine("Lycka till!");

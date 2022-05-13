@@ -22,7 +22,7 @@ namespace Slutprojektet
             Hunger += randomNumber.Next(2, 4);
             Boredom += randomNumber.Next(2, 4);
 
-            // Om boredom och hunger är större än 10 är spelet slut. 
+            // Om boredom och hunger är större än 15 är spelet slut. 
             if (Boredom > 15 || Hunger > 15)
             {
                 IsAlive = false;

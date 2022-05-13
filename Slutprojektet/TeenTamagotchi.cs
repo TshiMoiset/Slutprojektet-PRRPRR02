@@ -21,7 +21,8 @@ namespace Slutprojektet
         // Kollar ifall att man skriver ett ord när man lär tamagotchin ett ord, samt lägger till den i listan. 
         public override void teach(string word)
         {
-
+            // Kör igenom ordet man skrivit för att kontrollera om användaren har tryck på space. 
+            //Spelet kommer tolka det som att man skrivit 2 ord och hindra spelaren från att köra vidare. 
             for (int i = 0; i < word.Length; i++)
             {
                 if (word[i] == ' ')
@@ -35,6 +36,7 @@ namespace Slutprojektet
             {
                 Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
                 Console.WriteLine("Försök igen nästa gång!");
+                invalidWord = false;
             }
 
             // Om inte invalidWord inte är true körs koden och tamagotchin lär sig ett nytt ord.  

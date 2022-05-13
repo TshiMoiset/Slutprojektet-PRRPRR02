@@ -58,10 +58,10 @@ namespace Slutprojektet
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public virtual void printStats()
         {
-            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vid Liv: {isAlive} || ");
-            //Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Vid Liv: {isAlive} ||");
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Ålder: Tonåring || Vid Liv: {isAlive} || ");
         }
 
+        // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
         public virtual void tick()
         {
             hunger += randomNumber.Next(0, 2);
@@ -79,9 +79,11 @@ namespace Slutprojektet
             }
         }
 
-        // Lägger till ett ord i words, och anropar ReduceBoredom. 
+        // Kollar ifall att man skriver ett ord när man lär tamagotchin ett ord, samt lägger till den i listan. 
         public virtual void teach(string word)
         {
+            // Kör igenom ordet man skrivit för att kontrollera om användaren har tryck på space. 
+            //Spelet kommer tolka det som att man skrivit 2 ord och hindra spelaren från att köra 
             for (int i = 0; i < word.Length; i++)
             {
                 if (word[i] == ' ')
@@ -90,12 +92,15 @@ namespace Slutprojektet
                 }
             }
 
+            // När invalidWord är true körs koden och tamagotchin lär sig inte ett nytt ord. 
             if (invalidWord)
             {
                 Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
                 Console.WriteLine("Försök igen nästa gång!");
+                invalidWord = false;
             }
 
+            // Om inte invalidWord inte är true körs koden och tamagotchin lär sig ett nytt ord.  
             else
             {
                 reduceBoredom();
