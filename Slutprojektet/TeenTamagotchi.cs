@@ -18,9 +18,10 @@ namespace Slutprojektet
             Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Ålder: Tonåring || Vid Liv: {isAlive} || ");
         }
 
-        // Lägger till ett ord i words, och anropar ReduceBoredom. 
+        // Kollar ifall att man skriver ett ord när man lär tamagotchin ett ord, samt lägger till den i listan. 
         public override void teach(string word)
         {
+
             for (int i = 0; i < word.Length; i++)
             {
                 if (word[i] == ' ')
@@ -29,12 +30,14 @@ namespace Slutprojektet
                 }
             }
 
+            // När invalidWord är true körs koden och tamagotchin lär sig inte ett nytt ord. 
             if (invalidWord)
             {
                 Console.WriteLine($"{name} kan bara lära sig ett ord åt gången.");
                 Console.WriteLine("Försök igen nästa gång!");
             }
 
+            // Om inte invalidWord inte är true körs koden och tamagotchin lär sig ett nytt ord.  
             else
             {
                 reduceBoredom();
@@ -46,8 +49,11 @@ namespace Slutprojektet
         // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
         public override void tick()
         {
+            // Adderar hunger och boredom med en random siffra. 
             Hunger += randomNumber.Next(2, 4);
             Boredom += randomNumber.Next(2, 3);
+
+            // Om boredom och hunger är större än 10 är spelet slut. 
             if (Boredom > 10 || Hunger > 10)
             {
                 IsAlive = false;
