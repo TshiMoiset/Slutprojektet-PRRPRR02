@@ -36,35 +36,17 @@ namespace Slutprojektet
             }
         }
 
-        // public void teachNewNumber()
-        // {
-        //     for (int i = 0; i < learnedNumber.Count; i++)
-        //     {
-        //         Console.WriteLine(learnedNumber.Peek());
-        //     }
-        // }
-
-
-
-        // Lägger in siffrorna i Queue:n
-        void AddNumbersToQueue()
+        public void teachNewNumber(int number)
         {
-            learnedNumber.Enqueue(5);
-            learnedNumber.Enqueue(20);
-            learnedNumber.Enqueue(200);
-            learnedNumber.Enqueue(999999);
-            learnedNumber.Enqueue(5000);
-            learnedNumber.Enqueue(25000);
+            reduceBoredom();
+            learnedNumber.Enqueue(number);
+            Console.WriteLine($"{name} har nu lärt sig ordet: {number}");
         }
 
         public void ShowKnownNumbers()
         {
-            AddNumbersToQueue();
-            // for (int i = 0; i < learnedNumber.Count; i++)
-            // {
-            //     Console.WriteLine(learnedNumber.Peek());
-            // }
-
+            Console.WriteLine($"{name} kan talen:");
+            Console.WriteLine();
             foreach (var value in learnedNumber)
             {
                 Console.WriteLine(value);

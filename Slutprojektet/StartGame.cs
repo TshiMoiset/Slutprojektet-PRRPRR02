@@ -19,6 +19,7 @@ namespace Slutprojektet
             while (answer != "vuxen" || answer != "tonåring")
             {
                 Console.WriteLine("Ska din Tamagotchi vara vuxen eller tonåring?");
+                Console.WriteLine("Kör du med vuxen tamagotchi kommer du ha ett husdjur.");
                 answer = Console.ReadLine().ToLower();
                 Console.Clear();
 
@@ -156,6 +157,7 @@ namespace Slutprojektet
         void AdultTamagotchiGameMode()
         {
             AdultTamagotchi tamagotchi = new AdultTamagotchi();
+            Pet pet = new Pet();
             int answerInt = 0;
             string answer = "";
 
@@ -163,6 +165,11 @@ namespace Slutprojektet
             Console.WriteLine();
             Console.Write("Tamagotchi namn: ");
             tamagotchi.name = Console.ReadLine().ToUpper();
+            Console.WriteLine();
+            Console.WriteLine("Välje ett namn åt husdjuret, tryck sedan [ENTER] för att fortsätta.");
+            Console.WriteLine();
+            Console.Write("Husdjurets namn: ");
+            pet.name = Console.ReadLine().ToUpper();
 
             // Hämtar värdet av isAlive. Om isAlive är true körs loopen. Behöver loopen för att köra spelet. 
             while (tamagotchi.GetAlive())
@@ -170,6 +177,10 @@ namespace Slutprojektet
                 Console.Clear();
                 Console.Write($"Namn: {tamagotchi.name} || ");
                 tamagotchi.printStats();
+
+                Console.Write($"Namn: {pet.name} || ");
+                pet.printStats();
+
                 Console.WriteLine();
                 Console.WriteLine("Vad vill du göra?");
                 Console.WriteLine($"1. Lär {tamagotchi.name} ett nytt tal.");
@@ -187,13 +198,17 @@ namespace Slutprojektet
                     Console.Clear();
                     Console.Write($"Namn: {tamagotchi.name} || ");
                     tamagotchi.printStats();
+                    Console.Write($"Namn: {pet.name}");
+                    pet.printStats();
                     Console.WriteLine();
                     Console.WriteLine("Vad vill du göra?");
                     Console.WriteLine($"1. Lär {tamagotchi.name} ett nytt tal.");
                     Console.WriteLine($"2. Vilka tal kan {tamagotchi.name}?");
                     Console.WriteLine($"3. Hälsa på {tamagotchi.name}.");
                     Console.WriteLine($"4. Mata {tamagotchi.name}");
-                    Console.WriteLine($"5. Göra ingenting.");
+                    Console.WriteLine($"5. Lek med husdjuret.");
+                    Console.WriteLine($"6. Mata husdjuret.");
+                    Console.WriteLine($"7. Göra ingenting.");
                     Console.WriteLine();
 
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -205,37 +220,85 @@ namespace Slutprojektet
                     answer = Console.ReadLine();
                 }
 
-                // Om användaren svara 1 körs koden. Man lär tamagotchin något
+                // Om användaren svara 1 körs koden. Man lär tamagotchin ett tal.
                 if (answer == "1")
                 {
+                    int learnNumber = 0;
+                    string numberAnswer = "";
 
+                    Console.Write($"Lär {tamagotchi.name} ett nytt tal: ");
+
+                    numberAnswer = Console.ReadLine();
+
+                    // Gör om string till en int och tvingar spelaren att svara med en int.
+                    while (!int.TryParse(numberAnswer, out learnNumber))
+                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Det där är inte ett giltigt svar!");
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("Skriv ett tal!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        numberAnswer = Console.ReadLine();
+                    }
+
+
+                    tamagotchi.teachNewNumber(learnNumber);
+                    Console.WriteLine(learnNumber);
                 }
 
+                // Väljer man 2 körs koden och spelaren får se vilka tal tamagitchin kan
                 if (answer == "2")
                 {
                     tamagotchi.ShowKnownNumbers();
                     Console.ReadLine();
+                    pet.tick();
                 }
 
+                // Om användaren svara 3 körs koden. Man hälsar på tamagotchin. Tamagothin kommer svara med en random hälsningfras som finns i en array.  
                 if (answer == "3")
                 {
-                    tamagotchi.ShowKnownNumbers();
+                    Console.WriteLine($"Säg något till {tamagotchi.name}.");
+                    Console.WriteLine("Tryck sedan på [ENTER] för att fortsätta!");
+                    Console.WriteLine();
+                    Console.ReadLine();
+                    tamagotchi.hi();
+                    tamagotchi.tick();
+                    pet.tick();
                     Console.ReadLine();
                 }
 
+                // Om användaren svara 4 körs koden och tamagotchin äter. Hunger sänks.
                 if (answer == "4")
                 {
-                    tamagotchi.ShowKnownNumbers();
+                    Console.Clear();
+                    Console.WriteLine("Tack för maten :)");
+                    Console.WriteLine("Tryck på [ENTER] för att fortsätta!");
                     Console.ReadLine();
+                    tamagotchi.feed();
+                }
+
+                if (answer == "5")
+                {
+                    pet.reduceBoredom();
+                    tamagotchi.tick();
+                    tamagotchi.reduceBoredom();
+                }
+
+                if (answer == "6")
+                {
+                    pet.feed();
                 }
 
                 // Svara man 5 körs koden nedan, hunger och boredom ökar med ett random värde.
-                if (answer == "5")
+                if (answer == "7")
                 {
                     tamagotchi.tick();
+                    pet.tick();
                 }
             }
         }
     }
 }
+
 

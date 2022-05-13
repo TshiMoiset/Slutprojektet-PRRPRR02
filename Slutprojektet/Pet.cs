@@ -4,6 +4,11 @@ namespace Slutprojektet
 {
     public class Pet : Creature
     {
+        public override void printStats()
+        {
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vid Liv: {isAlive} || ");
+        }
+
         public override void tick()
         {
             hunger += randomNumber.Next(0, 2);
