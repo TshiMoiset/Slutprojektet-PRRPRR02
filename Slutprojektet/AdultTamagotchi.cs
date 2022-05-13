@@ -7,12 +7,12 @@ namespace Slutprojektet
     {
         Menu goToMenu = new Menu();
         string[] Salutations = { "God dag", "Var hälsad", "Trevligt att råkas", "Fint väder så här års" };
-        Queue<int> countList = new Queue<int>();
+        Queue<int> learnedNumber = new Queue<int>();
 
         // Skriver ut nuvarande hunger och bredom, och meddelar också huruvida tamagotchin lever.
         public override void printStats()
         {
-            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Vokabulär: {words.Count} || Ålder: Vuxen || Vid Liv: {isAlive} || ");
+            Console.WriteLine($"Tråkighet: {Boredom} || Hunger: {Hunger} || Sifferminne: {learnedNumber.Count} || Ålder: Vuxen || Vid Liv: {isAlive} || ");
         }
 
         // Ökar hunger och boredom, och om någon av dem kommer över 10 så blir isAlive false.
@@ -33,6 +33,41 @@ namespace Slutprojektet
                 Console.ReadLine();
                 Console.Clear();
                 goToMenu.RunMenu();
+            }
+        }
+
+        // public void teachNewNumber()
+        // {
+        //     for (int i = 0; i < learnedNumber.Count; i++)
+        //     {
+        //         Console.WriteLine(learnedNumber.Peek());
+        //     }
+        // }
+
+
+
+        // Lägger in siffrorna i Queue:n
+        void AddNumbersToQueue()
+        {
+            learnedNumber.Enqueue(5);
+            learnedNumber.Enqueue(20);
+            learnedNumber.Enqueue(200);
+            learnedNumber.Enqueue(999999);
+            learnedNumber.Enqueue(5000);
+            learnedNumber.Enqueue(25000);
+        }
+
+        public void ShowKnownNumbers()
+        {
+            AddNumbersToQueue();
+            // for (int i = 0; i < learnedNumber.Count; i++)
+            // {
+            //     Console.WriteLine(learnedNumber.Peek());
+            // }
+
+            foreach (var value in learnedNumber)
+            {
+                Console.WriteLine(value);
             }
         }
 
